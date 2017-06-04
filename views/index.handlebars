@@ -1,0 +1,46 @@
+<div id="flavors" class="row">
+
+	<div class="list-group col-sm-4 col-md-4 col-lg-4" id="freezer">
+				
+		<span class="label label-primary">Freezer</span>
+			
+		{{#each popsicles}}
+			{{#unless this.devoured}}
+				<li class="list-group-item">				     	
+				    <form action="/{{this.id}}?_method=PUT" method="POST">
+          				<input type="hidden" name='devoured' value=1>
+          				<button class="devour btn btn-default btn-sm" type="submit">{{this.pop_name}}</button>
+        			</form>
+        		</li>
+			{{/unless}}
+		{{/each}}
+	</div>
+
+	<div class="list-group col-sm-4 col-md-4 col-lg-4" id="devoured">
+				
+		<span class="label label-default">Devoured</span>
+			
+		{{#each popsicles}}
+			{{#if this.devoured}}
+				<li class="list-group-item"><button class="devour btn btn-default btn-sm disabled" type="submit">{{this.pop_name}}</button></li>
+			{{/if}}
+		{{/each}}
+	</div>	
+</div>
+
+	<div class="row">
+		<div class="col-md-3 col-lg-3 col-sm-3">
+			<div class="form-group">
+				<span class="label label-primary">Add a Flavor</span>
+				<form action="/" method="POST">
+				<div class="input-group" id="addflavor">
+			    	<span class="input-group-addon"></span>
+			    	<input type="text" class="form-control" name="name">
+			    	<span class="input-group-btn">
+			      		<button class="btn btn-primary" type="submit">+</button>
+			    	</span>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>

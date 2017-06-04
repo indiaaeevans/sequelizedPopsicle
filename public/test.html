@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Popsicle Shop</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<!--Google Fonts-->
+	
+	<!-- BOOTSTRAP CSS ("Cerulean" Bootswatch Theme)-->
+    <link type="text/css" rel="stylesheet" href="assets/css/bootstrap.css">
+    <!-- OTHER CSS STYLES -->
+    <link type="text/css" rel="stylesheet" href="assets/css/style.css">
+  	<!--jQuery-->
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+</head>
+<body>
+<!-- BACKGROUND IMAGE -->
+<img class="bg" src="assets/img/popsicle.png">
+
+<div class="container">
+	<!-- PAGE HEADER -->
+	<div class="jumbotron">
+		<h1>Popsicle Shop</i></h1>
+		<p>Try all of the flavors!</p>
+		<h5 class="instructions">Click on a popsicle in the freezer to devour it!<br>Add your own flavor at the bottom of the page!</h5>
+	</div>
+	
+	
+	<div id="flavors" class="row">
+    	<!-- LIST OF POPSICLES IN THE FREEZER -->
+		<div class="list-group col-sm-4 col-md-4 col-lg-4" id="freezer">
+			<span class="label label-primary">Freezer</span>
+
+			<a href="#" class="list-group-item">Fudgesicle</a>
+			<a href="#" class="list-group-item">Orange Creamsicle</a>
+			<a href="#" class="list-group-item">Watermelon</a>
+		</div>
+		<!-- LIST OF EATEN POPSICLES -->
+		<div class="list-group col-sm-4 col-md-4 col-lg-4" id="devoured">
+			<span class="label label-default">Devoured</span>
+			<li class="list-group-item">Sherbet</li>
+			<li class="list-group-item">Vanilla Bean</li>
+		</div>	
+	</div>
+
+	<!-- FORM TO ADD A FLAVOR -->
+	<div class="row">
+		<div class="col-md-3 col-lg-3 col-sm-3">
+			<div class="form-group">
+				<span class="label label-success">Add a Flavor</span>
+				<form>
+				<div class="input-group" id="addflavor">				
+			    	<span class="input-group-addon"></span>
+			    	<input type="text" class="form-control">
+			    	<span class="input-group-btn">
+			      		<button class="btn btn-success" type="submit">+</button>
+			    	</span>			   
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+</div>
+<!-- Sticky Footer -->
+    <footer class="footer">
+        <div class="container">
+			<span><a class="footerLinks" href="/">Home </a> | <a class="footerLinks" href="https://github.com/indiaaeevans/popsicle"> GitHub Repo</a></span>
+        </div>
+    </footer>
+</body>
+</html>
