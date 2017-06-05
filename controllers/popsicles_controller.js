@@ -1,41 +1,41 @@
-var express = require("express");
+// Dependencies
+// =============================================================
+var db = require("../models");
 
-var router = express.Router();
+// Routes
+// =============================================================
+module.exports = function(app) {
 
-// Import the model (cat.js) to use its database functions.
-var popsicle = require("../models/popsicle.js");
-
-// ROUTES
-
-// TO DISPLAY ALL THE POPSICLES IN THE TABLE
-router.get("/", function(req, res) {
-  popsicle.selectAll(function(data) {
-    var hbsObject = {
-      popsicles: data
-    };
-    console.log(hbsObject);
-    res.render("index", hbsObject);
+  // TO DISPLAY ALL THE POPSICLES IN THE TABLE
+  app.get("/", function(req, res) {
+    db.Popsicle.findAll({attributes : ['id', 'pop_name', 'devoured']})
+    .then(function(results) {
+      var hbsObject = {
+        popsicles: results
+      };
+      console.log(hbsObject);
+      res.render("index", hbsObject);
+    });
   });
-});
 
-// TO POST A NEW POPSICLE TO THE TABLE
-router.post("/", function(req, res) {
-  popsicle.insertOne(["pop_name"], [req.body.name], 
-    function() {
+  // TO POST A NEW POPSICLE TO THE TABLE
+  app.post("/", function(req, res) {
+    db.Popsicle.create({ pop_name: req.body.name })
+      .then(function(results) {
+        res.redirect("/");
+      });
+  });
+
+  // TO UPDATE A POPSICLE'S "DEVOURED" VALUE IN THE TABLE
+  app.put("/:id", function(req, res) {
+    var condition = { where: { id: req.params.id } };
+    var isdevoured = req.body.devoured;
+
+    db.Popsicle.update({devoured: isdevoured}, condition)
+      .then(function(results) {
+        res.json(results);
+      });
+      
       res.redirect("/");
-    });
-});
-
-// TO UPDATE A POPSICLE'S "DEVOURED" VALUE IN THE TABLE
-router.put("/:id", function(req, res) {
-  var condition = "id = " + req.params.id;
-  var isdevoured = req.body.devoured;
-
-  popsicle.updateOne({devoured: isdevoured},
-    condition, function() {
-      res.redirect("/");
-    });
-});
-
-// Export routes for server.js to use.
-module.exports = router;
+  });
+};
